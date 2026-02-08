@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setTimeout(() => {
       if (todayValentine) {
-        alert(`💖 Today is ${todayValentine.day}`);
+        window.location.href = todayValentine.page;
       } else {
         alert("💖 Valentine Week is coming soon!");
       }
