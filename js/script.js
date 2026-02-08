@@ -1,46 +1,62 @@
-// Valentine Week project – FINAL WORKING VERSION 💖
-
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("JS loaded safely ✅");
+  const clickSound = document.getElementById("clickSound");
 
-  const valentineWeek = [
-    { day: "Rose Day 🌹", page: "rose.html" },
-    { day: "Propose Day 💍", page: "propose.html" },
-    { day: "Chocolate Day 🍫", page: "chocolate.html" },
-    { day: "Teddy Day 🧸", page: "teddy.html" },
-    { day: "Promise Day 🤝", page: "promise.html" },
-    { day: "Hug Day 🤗", page: "hug.html" },
-    { day: "Kiss Day 😘", page: "kiss.html" },
-    { day: "Valentine’s Day ❤️", page: "valentine.html" }
-  ];
-
-  const startDate = new Date("2026-02-07");
-  const today = new Date();
-
-  const diffDays = Math.floor(
-    (today - startDate) / (1000 * 60 * 60 * 24)
-  );
-
-  let todayValentine = null;
-
-  if (diffDays >= 0 && diffDays < valentineWeek.length) {
-    todayValentine = valentineWeek[diffDays];
+  function playClickSound() {
+    if (clickSound) {
+      clickSound.currentTime = 0;
+      clickSound.play().catch(() => {});
+    }
   }
 
+  /* ENTER BUTTON (index.html) */
   const enterBtn = document.getElementById("enterBtn");
-  console.log("Button found:", enterBtn);
 
-  if (!enterBtn) return;
+  if (enterBtn) {
+    enterBtn.addEventListener("click", () => {
+      playClickSound();
 
-  enterBtn.addEventListener("click", () => {
-    document.body.classList.add("fade-out");
+      document.body.classList.add("fade-out");
 
-    setTimeout(() => {
-      if (todayValentine) {
-        window.location.href = todayValentine.page;
-      } else {
-        alert("💖 Valentine Week is coming soon!");
-      }
-    }, 800);
+      const valentineWeek = [
+        { page: "rose.html" },
+        { page: "propose.html" },
+        { page: "chocolate.html" },
+        { page: "teddy.html" },
+        { page: "promise.html" },
+        { page: "hug.html" },
+        { page: "kiss.html" },
+        { page: "valentine.html" }
+      ];
+
+      const startDate = new Date("2026-02-07");
+      const today = new Date();
+      const diffDays = Math.floor(
+        (today - startDate) / (1000 * 60 * 60 * 24)
+      );
+
+      const todayPage =
+        diffDays >= 0 && diffDays < valentineWeek.length
+          ? valentineWeek[diffDays].page
+          : null;
+
+      setTimeout(() => {
+        if (todayPage) {
+          window.location.href = todayPage;
+        } else {
+          alert("💖 Valentine Week is coming soon!");
+        }
+      }, 1000);
+    });
+  }
+
+  /* BACK BUTTON (ALL DAY PAGES) */
+  document.querySelectorAll(".back-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      playClickSound();
+
+      setTimeout(() => {
+        window.location.href = "index.html";
+      }, 1000);
+    });
   });
 });
