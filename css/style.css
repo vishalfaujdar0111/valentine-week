@@ -57,3 +57,45 @@ body {
     transform: translateY(0);
   }
 }
+
+
+/* =========================
+   Mobile Responsive Polish
+   ========================= */
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 0 16px;
+  }
+
+  .title {
+    font-size: 2rem;        /* smaller heading */
+    line-height: 1.2;
+  }
+
+  .subtitle {
+    font-size: 1rem;        /* readable on phone */
+    margin-bottom: 24px;
+  }
+
+  .primary-btn {
+    width: 100%;            /* full-width button */
+    max-width: 280px;
+    padding: 14px 20px;     /* thumb-friendly */
+    font-size: 1rem;
+  }
+}
+
+/* =========================
+   Micro-interactions
+   ========================= */
+
+/* Tap / press feedback */
+.primary-btn:active {
+  transform: scale(0.96);
+}
+
+/* Remove ugly blue highlight on mobile */
+.primary-btn {
+  -webkit-tap-highlight-color: transparent;
+}
