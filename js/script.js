@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
           alert("💖 Valentine Week is coming soon!");
         }
-      }, 1000);
+      }, 800);
     });
   }
 
