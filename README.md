@@ -2,7 +2,7 @@
 
 A responsive Valentine Week website that **automatically detects the current Valentine day**
 and opens the correct page with 
-**smooth animations and faaah sound effect**.
+**smooth animations and faaah sound effect and cute cats images**.
 
 ---
 
